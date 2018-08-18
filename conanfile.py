@@ -14,6 +14,7 @@ class CcsConan(ConanFile):
             }
     requires = "boost/1.67.0@conan/stable"
     build_requires = "gtest/1.8.0@bincrafters/stable"
+    exports = 'conanbuild.patch'
 
     def source(self):
         tools.patch(base_path='ccs', patch_file='conanbuild.patch')
