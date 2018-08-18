@@ -1,0 +1,7 @@
+*.bak
+*.swp
+*~
+/ccs
+/conanbuildinfo.*
+/conaninfo.txt
+/package

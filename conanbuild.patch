@@ -1,0 +1,22 @@
+diff --git a/Makefile b/Makefile
+index 1f59974..dfc59b3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -51,7 +51,7 @@ endif
+ 
+ CXX = $(CCACHE) $(if $(GCC_HOME),$(GCC_HOME)/bin/,)g++ 
+ CFLAGS = -std=gnu++0x -ggdb -O2 -Wall -Wextra -Werror \
+-  -fdiagnostics-show-option $(PLATCFLAGS) $(INCLUDES)
++  -fdiagnostics-show-option $(PLATCFLAGS) $(INCLUDES) $(CONANFLAGS)
+ AR = ar rcu
+ RANLIB = ranlib
+ RM = rm -f
+@@ -128,7 +128,7 @@ $(MAIN_HC):out/main/%.hc: $(MAIN_DIR)/%.h $(FIG_MAIN)
+ 
+ $(TEST_T): $(TEST_O) $(LIB_A)
+ 	@mkdir -p $(dir $@)
+-	$(CXX) -o $@ $^ $(PLATLDFLAGS) $(LIBS) $(LIBS_TEST)
++	$(CXX) -o $@ $^ $(CFLAGS) $(PLATLDFLAGS) $(LIBS) $(LIBS_TEST)
+ 	
+ $(TARBALL): $(ALL_T) $(TESTS_PASSED) $(CP_INCLUDE)
+ 	tar zcfp $@ dist
